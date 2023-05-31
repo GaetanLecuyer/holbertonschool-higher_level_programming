@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-def uppercase(s):
-    for c in s:
-        print(chr(ord(c) & 223), end='')
-    print()
+def uppercase(str):
+    for i in str:
+        if ord(i) < 123 and ord(i) > 96:
+            i = chr(ord(i) - 32)
+        print(i, end="")
+    print('')
