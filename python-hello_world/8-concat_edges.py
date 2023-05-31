@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-class O: __str__=lambda _: "object-oriented"
-class P: __str__=lambda _: "programming"
-class Y: __str__=lambda _: "with"
-class T: __str__=lambda _: "Python"
-print(O(),P(),Y(),T())
+str = "Python is an interpreted, interactive, object-oriented programming\
+ language that combines remarkable power with very clear syntax"
+str = str[39:67] + str[107:112] + str[:6]
+print(str)
