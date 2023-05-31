@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 for i in range(99):
-    print("{} {}".format(i, format(i, '02X')))
+    print("{} {}".format(i, hex(i)))
