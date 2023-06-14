@@ -2,9 +2,9 @@
 class Square:
     def __init__(self):
         """
-        Constructeur de la classe Square.
-        Cette methode est appelee lorsqu'une instance de la classe est cree.
-        Elle ne prend aucun argument supplementaire en dehors de 'self',
-        qui represente l'instance actuelle de la classe.
+        Constructor for the Square class.
+        This method is called when an instance of the class is created.
+        It takes no additional arguments besides 'self',
+        which represents the current instance of the class.
         """
         pass
