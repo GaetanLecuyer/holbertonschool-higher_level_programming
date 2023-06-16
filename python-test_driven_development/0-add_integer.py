@@ -20,3 +20,10 @@ def add_integer(a, b=98):
     b = int(b)
 
     return a + b
+
+
+# Run doctest when executed as a standalone script
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
