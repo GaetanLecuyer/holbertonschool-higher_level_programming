@@ -1,28 +1,19 @@
 #!/usr/bin/python3
+"""
+This module implement the methode add_integer.
+
+
+"""
+
+
 def add_integer(a, b=98):
     """
-    Ajoute deux entiers.
-
-    Args:
-        a (int or float): Le premier nombre.
-        b (int or float): Le deuxieme nombre. Par defaut : 98.
-
-    Returns:
-        int: La somme de a et b.
-
-    Raises:
-        TypeError: Si a ou b n'est pas un entier ou un flottant.
+    This methode return the sum of two integers.
     """
-    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-        raise TypeError("a doit etre un entier ou b doit etre un entier")
 
-    a = int(a)
-    b = int(b)
+    if type(a) is not int and type(a) is not float:
+        raise TypeError("a must be an integer")
+    if type(b) is not int and type(b) is not float:
+        raise TypeError("b must be an integer")
+    return (int(a) + int(b))
 
-    return a + b
-
-
-# Test fonctionnel
-result = add_integer(3, 5)
-expected = 8
-assert result == expected, f"Erreur : resultat obtenu = {result}, resultat attendu = {expected}"
