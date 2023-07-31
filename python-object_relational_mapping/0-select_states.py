@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 This script retrieves and prints all the states from the 'states' table
 in a MySQL database.
