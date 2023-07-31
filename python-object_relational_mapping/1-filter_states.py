@@ -1,24 +1,22 @@
 #!/usr/bin/python3
 """
-Displays all values in the states table of hbtn_0e_0_usa where name matches
-the argument.
+This script retrieves and prints all the states from the 'states' table
+in a MySQL database with names starting with 'N'.
 """
 import MySQLdb
 import sys
 
 
-def filter_states_by_name(mysql_username, mysql_password, database_name,
-                          state_name_searched):
+def filter_states_by_name_starting_with_N(mysql_username, mysql_password,
+                                          database_name):
     """
-    Displays all values in the states table of hbtn_0e_0_usa where name
-    matches the given state_name_searched.
+    Retrieves and prints all states with names starting with 'N' from the
+    'states' table in the given MySQL database.
 
     Parameters:
         mysql_username (str): The MySQL database username.
         mysql_password (str): The MySQL database password.
         database_name (str): The name of the MySQL database.
-        state_name_searched (str): The state name to search in
-            the states table.
 
     Returns:
         None
@@ -33,10 +31,10 @@ def filter_states_by_name(mysql_username, mysql_password, database_name,
     # Create a cursor object to execute SQL queries
     cursor = db.cursor()
 
-    # Prepare the SQL query with user input using the format method
+    # Execute the SQL query to retrieve all rows from the 'states' table
+    # where the name starts with 'N'
     cursor.execute(
-        f"SELECT * FROM states WHERE name = '{state_name_searched}'\
-              ORDER BY id ASC")
+        "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id")
 
     # Fetch all the rows returned by the query
     results = cursor.fetchall()
@@ -51,11 +49,12 @@ def filter_states_by_name(mysql_username, mysql_password, database_name,
 
 
 if __name__ == "__main__":
-    # The script expects four command-line arguments: MySQL username,
-    # password, database name, and state name to search
-    mysql_username, mysql_password, database_name, state_name_searched =\
-        sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+    # The script expects three command-line arguments: MySQL username,
+    # password, and database name
+    mysql_username, mysql_password, database_name = sys.argv[1],\
+        sys.argv[2], sys.argv[3]
 
-    # Call the filter_states_by_name function with the provided arguments
-    filter_states_by_name(mysql_username, mysql_password,
-                          database_name, state_name_searched)
+    # Call the filter_states_by_name_starting_with_N function with
+    # the provided arguments
+    filter_states_by_name_starting_with_N(
+        mysql_username, mysql_password, database_name)
