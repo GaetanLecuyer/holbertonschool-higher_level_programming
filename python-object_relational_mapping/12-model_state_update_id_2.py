@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Adds the State object "Louisiana" to the database hbtn_0e_6_usa.
+Changes the name of a State object from the database hbtn_0e_6_usa.
 """
 
 import sys
@@ -9,9 +9,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-def add_state(mysql_username, mysql_password, database_name):
+def update_state(mysql_username, mysql_password, database_name):
     """
-    Adds the State object "Louisiana" to the database.
+    Changes the name of the State object with id=2 to "New Mexico"
+        in the database.
 
     Parameters:
         mysql_username (str): The MySQL database username.
@@ -32,16 +33,13 @@ def add_state(mysql_username, mysql_password, database_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Create the State object with the name "Louisiana"
-    new_state = State(name="Louisiana")
+    # Query the State object with id=2
+    state = session.query(State).filter(State.id == 2).first()
 
-    # Add the new State object to the session and commit the changes
-    #   to the database
-    session.add(new_state)
-    session.commit()
-
-    # Print the new state's ID after creation
-    print(new_state.id)
+    # Update the name of the State object to "New Mexico"
+    if state is not None:
+        state.name = "New Mexico"
+        session.commit()
 
     # Close the session
     session.close()
@@ -54,4 +52,4 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Call the function with the provided arguments
-    add_state(mysql_username, mysql_password, database_name)
+    update_state(mysql_username, mysql_password, database_name)
